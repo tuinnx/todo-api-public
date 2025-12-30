@@ -6,6 +6,7 @@ const router = express.Router();
 // CRIAR USER
 router.post("/", async (req, res, next) => {
   try {
+    // extrai name e email do corpo da requisição
     const { name, email } = req.body || {};
 
     if (!name || !email) {
