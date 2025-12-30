@@ -1,0 +1,120 @@
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>TODO - Front</title>
+    <link rel="stylesheet" href="./style.css" />
+  </head>
+  <body>
+    <header class="top">
+      <h1>TODO</h1>
+      <div class="health">
+        API: <span id="healthBadge" class="badge">checando...</span>
+      </div>
+    </header>
+
+    <main class="grid">
+      <section class="card">
+        <h2>Criar / Editar Task</h2>
+
+        <form id="taskForm" class="form">
+          <input type="hidden" id="taskId" />
+
+          <label>
+            Título *
+            <input id="title" required placeholder="Ex: Ajustar landing page" />
+          </label>
+
+          <label>
+            Descrição
+            <textarea id="description" rows="3" placeholder="Opcional..."></textarea>
+          </label>
+
+          <div class="row">
+            <label>
+              Responsável *
+              <select id="responsibleUserId" required></select>
+            </label>
+
+            <label>
+              Status *
+              <select id="statusId" required></select>
+            </label>
+          </div>
+
+          <div class="actions">
+            <button type="submit" class="btn primary" id="saveBtn">Salvar</button>
+            <button type="button" class="btn" id="clearBtn">Limpar</button>
+          </div>
+
+          <p id="formMsg" class="msg"></p>
+        </form>
+      </section>
+
+      <section class="card">
+        <h2>Filtros</h2>
+
+        <div class="form">
+          <div class="row">
+            <label>
+              Status
+              <select id="filterStatus">
+                <option value="">Todos</option>
+              </select>
+            </label>
+
+            <label>
+              Responsável
+              <select id="filterResponsible">
+                <option value="">Todos</option>
+              </select>
+            </label>
+          </div>
+
+          <div class="row">
+            <label>
+              Ordenação
+              <select id="filterOrder">
+                <option value="desc">Mais recentes</option>
+                <option value="asc">Mais antigas</option>
+              </select>
+            </label>
+
+            <button class="btn" id="refreshBtn" type="button">Atualizar lista</button>
+          </div>
+
+          <p class="hint">Dica: clique em “Editar” na tabela pra carregar no formulário.</p>
+        </div>
+      </section>
+
+      <section class="card full">
+        <div class="tableTop">
+          <h2>Tasks</h2>
+          <span id="count"></span>
+        </div>
+
+        <div class="tableWrap">
+          <table class="table">
+            <thead>
+              <tr>
+                <th>ID</th>
+                <th>Título</th>
+                <th>Status</th>
+                <th>Responsável</th>
+                <th>Criada</th>
+                <th>Atualizada</th>
+                <th>Ações</th>
+              </tr>
+            </thead>
+            <tbody id="tasksTbody"></tbody>
+          </table>
+        </div>
+
+        <p id="listMsg" class="msg"></p>
+      </section>
+    </main>
+
+    <script src="./app.js"></script>
+  </body>
+</html>
